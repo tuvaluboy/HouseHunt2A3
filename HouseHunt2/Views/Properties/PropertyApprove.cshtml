@@ -1,0 +1,50 @@
+﻿@model IEnumerable <HouseHunt2.Models.Property>
+
+@{
+    ViewBag.Title = "Approve";
+}
+
+
+
+
+
+@using (Html.BeginForm("PropertyApprove", "Properties", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    foreach (var item in Model)
+    {
+    <div class="form-horizontal">
+        <h4 align="center"></h4>
+        <hr />
+   
+        <div class="form-group">
+            <div align="center">
+
+                @Html.DisplayFor(modelItem => item.Prop_Id)
+                <input name="Prop_Id" value="@item.Prop_Id" contenteditable="false"/>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <div align="center">
+                @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Agents, null, new { @class = "form-control" })
+             </div>
+        </div>
+      
+        <div class="form-group">
+            <div align="center" class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CREATE" class="butt" />
+            </div>
+        </div>
+        
+    </div>
+        }
+    }
+
+<div>
+    @Html.ActionLink("Back to List", "PropertyIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

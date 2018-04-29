@@ -1,0 +1,46 @@
+﻿@using Edi.Web.MVCExtensions.PagedList;
+    @*@using PagedList.Mvc;*@
+@model  IPagedList<HouseHunt2.Models.Property>
+
+@{
+    ViewBag.Title = "PropIndex";
+}
+
+<h2>PropIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "PropCreate")
+</p>
+<div class="form-inline">
+    <form align="center">
+@using (Html.BeginForm("PropIndex", "HHModel", FormMethod.Get))
+{
+    <div align="center">
+        <input class="form-control" type="text" name="search" placeholder="eg. Suva or 800">
+        <button type="button">Search</button>
+        @Html.RadioButton("searchBy", "Location", true) <text>Location</text>
+        @Html.RadioButton("searchBy", "Price") <text>Price</text> <br />
+      
+    </div>
+
+}
+        
+
+
+    </form>
+</div>
+<table class="table">
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td>
+                @{
+                    var base64 = Convert.ToBase64String(item.Prop_Img);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src='@imgsrc' style="max-width:200px;max-height:200px" />
+            </td>
+
+        }
+    </tr>
+</table>

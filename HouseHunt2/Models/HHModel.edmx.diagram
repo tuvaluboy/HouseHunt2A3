@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="268d0d3c329d46d38ca2eaeef208f16b" Name="Diagram1">
+        <EntityTypeShape EntityType="HHDBModel.Agent" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HHDBModel.Customer" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HHDBModel.Owner" Width="1.5" PointX="5.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HHDBModel.Property" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="HHDBModel.Ag_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="HHDBModel.Owner_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

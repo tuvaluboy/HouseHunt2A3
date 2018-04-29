@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HouseHunt2.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_First)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Last)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_First)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Last)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HHDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="Ag_Id" />
+          </Key>
+          <Property Name="Ag_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ag_First" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ag_Last" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ag_Gender" Type="char" MaxLength="10" />
+          <Property Name="Ag_DOB" Type="date" />
+          <Property Name="Ag_Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ag_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ag_Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ag_Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_First" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cus_Last" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cus_Gender" Type="char" MaxLength="10" />
+          <Property Name="Cus_DOB" Type="date" />
+          <Property Name="Cus_Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cus_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cus_Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cus_Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="Owner_Id" />
+          </Key>
+          <Property Name="Owner_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Own_First" Type="nvarchar" MaxLength="50" />
+          <Property Name="Own_Last" Type="nvarchar" MaxLength="50" />
+          <Property Name="Own_Gender" Type="char" MaxLength="10" />
+          <Property Name="Own_DOB" Type="date" />
+          <Property Name="Own_Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Own_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Own_Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Own_Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Prop_Id" />
+          </Key>
+          <Property Name="Prop_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prop_Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prop_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prop_Avail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prop_Condition" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prop_Price" Type="money" />
+          <Property Name="Owner_Id" Type="int" Nullable="false" />
+          <Property Name="Ag_Id" Type="int" Nullable="false" />
+          <Property Name="Prop_Img" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="Ag_Id">
+          <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="Ag_Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Ag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Owner_Id">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="Owner_Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HHDBModelStoreContainer">
+          <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Ag_Id" Association="Self.Ag_Id">
+            <End Role="Agent" EntitySet="Agent" />
+            <End Role="Property" EntitySet="Property" />
+          </AssociationSet>
+          <AssociationSet Name="Owner_Id" Association="Self.Owner_Id">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Property" EntitySet="Property" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HHDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="Ag_Id" />
+          </Key>
+          <Property Name="Ag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ag_First" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ag_Last" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ag_Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Ag_DOB" Type="DateTime" Precision="0" />
+          <Property Name="Ag_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ag_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ag_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ag_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="Self.Ag_Id" FromRole="Agent" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_First" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cus_Last" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cus_Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Cus_DOB" Type="DateTime" Precision="0" />
+          <Property Name="Cus_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cus_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cus_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cus_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="Owner_Id" />
+          </Key>
+          <Property Name="Owner_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Own_First" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Own_Last" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Own_Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Own_DOB" Type="DateTime" Precision="0" />
+          <Property Name="Own_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Own_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Own_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Own_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="Self.Owner_Id" FromRole="Owner" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Prop_Id" />
+          </Key>
+          <Property Name="Prop_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prop_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prop_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prop_Avail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prop_Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prop_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Owner_Id" Type="Int32" Nullable="false" />
+          <Property Name="Ag_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agent" Relationship="Self.Ag_Id" FromRole="Property" ToRole="Agent" />
+          <NavigationProperty Name="Owner" Relationship="Self.Owner_Id" FromRole="Property" ToRole="Owner" />
+          <Property Name="Prop_Img" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <Association Name="Ag_Id">
+          <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="Ag_Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Ag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Owner_Id">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="Owner_Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HHDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agents" EntityType="Self.Agent" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <EntitySet Name="Properties" EntityType="Self.Property" />
+          <AssociationSet Name="Ag_Id" Association="Self.Ag_Id">
+            <End Role="Agent" EntitySet="Agents" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="Owner_Id" Association="Self.Owner_Id">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HHDBModelStoreContainer" CdmEntityContainer="HHDBEntities">
+          <EntitySetMapping Name="Agents">
+            <EntityTypeMapping TypeName="HHDBModel.Agent">
+              <MappingFragment StoreEntitySet="Agent">
+                <ScalarProperty Name="Ag_Id" ColumnName="Ag_Id" />
+                <ScalarProperty Name="Ag_First" ColumnName="Ag_First" />
+                <ScalarProperty Name="Ag_Last" ColumnName="Ag_Last" />
+                <ScalarProperty Name="Ag_Gender" ColumnName="Ag_Gender" />
+                <ScalarProperty Name="Ag_DOB" ColumnName="Ag_DOB" />
+                <ScalarProperty Name="Ag_Street" ColumnName="Ag_Street" />
+                <ScalarProperty Name="Ag_City" ColumnName="Ag_City" />
+                <ScalarProperty Name="Ag_Phone" ColumnName="Ag_Phone" />
+                <ScalarProperty Name="Ag_Email" ColumnName="Ag_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HHDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+                <ScalarProperty Name="Cus_First" ColumnName="Cus_First" />
+                <ScalarProperty Name="Cus_Last" ColumnName="Cus_Last" />
+                <ScalarProperty Name="Cus_Gender" ColumnName="Cus_Gender" />
+                <ScalarProperty Name="Cus_DOB" ColumnName="Cus_DOB" />
+                <ScalarProperty Name="Cus_Street" ColumnName="Cus_Street" />
+                <ScalarProperty Name="Cus_City" ColumnName="Cus_City" />
+                <ScalarProperty Name="Cus_Phone" ColumnName="Cus_Phone" />
+                <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="HHDBModel.Owner">
+              <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="Owner_Id" ColumnName="Owner_Id" />
+                <ScalarProperty Name="Own_First" ColumnName="Own_First" />
+                <ScalarProperty Name="Own_Last" ColumnName="Own_Last" />
+                <ScalarProperty Name="Own_Gender" ColumnName="Own_Gender" />
+                <ScalarProperty Name="Own_DOB" ColumnName="Own_DOB" />
+                <ScalarProperty Name="Own_Street" ColumnName="Own_Street" />
+                <ScalarProperty Name="Own_City" ColumnName="Own_City" />
+                <ScalarProperty Name="Own_Phone" ColumnName="Own_Phone" />
+                <ScalarProperty Name="Own_Email" ColumnName="Own_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="HHDBModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="Prop_Img" ColumnName="Prop_Img" />
+                <ScalarProperty Name="Prop_Id" ColumnName="Prop_Id" />
+                <ScalarProperty Name="Prop_Street" ColumnName="Prop_Street" />
+                <ScalarProperty Name="Prop_City" ColumnName="Prop_City" />
+                <ScalarProperty Name="Prop_Avail" ColumnName="Prop_Avail" />
+                <ScalarProperty Name="Prop_Condition" ColumnName="Prop_Condition" />
+                <ScalarProperty Name="Prop_Price" ColumnName="Prop_Price" />
+                <ScalarProperty Name="Owner_Id" ColumnName="Owner_Id" />
+                <ScalarProperty Name="Ag_Id" ColumnName="Ag_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

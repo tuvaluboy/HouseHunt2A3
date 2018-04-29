@@ -1,0 +1,321 @@
+﻿@using Edi.Web.MVCExtensions.PagedList;
+
+@model IPagedList<HouseHunt2.Models.Property>
+
+@{
+    ViewBag.Title = "PropertyIndex";
+}
+
+<div>
+    @Html.Partial("_Carousel")
+</div>
+
+@*<p>
+        @Html.ActionLink("Create New", "PropCreate")
+    </p>*@
+
+<div>
+    <form>
+        <div style="color: white; background-color: darkblue;" align="center">
+            <div class="form-inline">
+                <h2 style="font-family: 'Lato', sans-serif;" align="center">SEARCH FOR PROPERTY</h2>
+                <select class="form-control" name="bedrooms" style="width: 120px;">
+                    <option value="0">BEDROOMS</option>
+                    <option value="1">1BR</option>
+                    <option value="2">2BR</option>
+                    <option value="3">3BR</option>
+                    <option value="4">4BR</option>
+                    <option value="5">5BR</option>
+                    <option value="6">6BR</option>
+                    <option value="7">7BR</option>
+                    <option value="8">>7BR</option>
+                </select>
+                <select class="form-control" name="location" style="width: 120px;">
+                    <option value="0">LOCATION</option>
+                    <option value="1">NAUSORI</option>
+                    <option value="2">SUVA</option>
+                    <option value="3">NAVUA</option>
+                    <option value="4">SIGATOKA</option>
+                    <option value="5">LAUTOKA</option>
+                    <option value="6">NADI</option>
+                    <option value="7">BA</option>
+                    <option value="8">TAVUA</option>
+                </select>
+                <select class="form-control" name="price" style="width: 120px;">
+                    <option value="0">PRICE</option>
+                    <option value="1">$100-$500</option>
+                    <option value="2">$500-$1000</option>
+                    <option value="3">$1000-$1500</option>
+                    <option value="4">$1500-$2000</option>
+                    <option value="5">$2000-$2500</option>
+                    <option value="6">$2500-$3000</option>
+                    <option value="7">$3000-$3500</option>
+                    <option value="8">$3500-$4000</option>
+                    <option value="9">$4000-$4500</option>
+                    <option value="10">$4500-$5000</option>
+                    <option value="11">>$5000</option>
+                </select>
+                <select class="form-control" name="baths" style="width: 120px;">
+                    <option value="0">BATHS</option>
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                    <option value="5">6</option>
+                    <option value="6">7</option>
+                    <option value="7">8</option>
+                    <option value="8">9</option>
+                    <option value="9">>9</option>
+                </select>
+                <button class="butt" type="button"><span class="glyphicon glyphicon-search"></span>SEARCH</button>
+                <button class="butt" type="button" data-toggle="modal" data-target="#preferences">CREATE PREFERENCE</button>
+            </div>
+            <br />
+        </div>
+        <div id="preferences" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">CREATE YOUR PREFERENCES</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div align="center">
+                            <div class="form-inline">
+                                <select class="form-control" name="bedrooms" style="width: 120px;">
+                                    <option value="0">BEDROOMS</option>
+                                    <option value="1">1BR</option>
+                                    <option value="2">2BR</option>
+                                    <option value="3">3BR</option>
+                                    <option value="4">4BR</option>
+                                    <option value="5">5BR</option>
+                                    <option value="6">6BR</option>
+                                    <option value="7">7BR</option>
+                                    <option value="8">>7BR</option>
+                                </select>
+                                <select class="form-control" name="location" style="width: 120px;">
+                                    <option value="0">LOCATION</option>
+                                    <option value="1">NAUSORI</option>
+                                    <option value="2">SUVA</option>
+                                    <option value="3">NAVUA</option>
+                                    <option value="4">SIGATOKA</option>
+                                    <option value="5">LAUTOKA</option>
+                                    <option value="6">NADI</option>
+                                    <option value="7">BA</option>
+                                    <option value="8">TAVUA</option>
+                                </select>
+                                <select class="form-control" name="area" style="width: 120px;">
+                                    <option value="0">AREA</option>
+                                    <option value="1">SAMABULA</option>
+                                    <option value="2">LAUCALA BEACH</option>
+                                    <option value="3">TOORAK</option>
+                                    <option value="4">NASESE</option>
+                                    <option value="5">NAILUVA</option>
+                                    <option value="6">VATUWAQA</option>
+                                    <option value="7">NABUA</option>
+                                    <option value="8">TAMAVUA</option>
+                                </select>
+                                <select class="form-control" name="price" style="width: 120px;">
+                                    <option value="0">PRICE</option>
+                                    <option value="1">$100-$500</option>
+                                    <option value="2">$500-$1000</option>
+                                    <option value="3">$1000-$1500</option>
+                                    <option value="4">$1500-$2000</option>
+                                    <option value="5">$2000-$2500</option>
+                                    <option value="6">$2500-$3000</option>
+                                    <option value="7">$3000-$3500</option>
+                                    <option value="8">$3500-$4000</option>
+                                    <option value="9">$4000-$4500</option>
+                                    <option value="10">$4500-$5000</option>
+                                    <option value="11">>$5000</option>
+                                </select>
+                                <select class="form-control" name="baths" style="width: 120px;">
+                                    <option value="0">BATHS</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">>9</option>
+                                </select>
+                                <select class="form-control" name="fpoints" style="width: 120px;">
+                                    <option value="0">NEAR</option>
+                                    <option value="1">USP</option>
+                                    <option value="2">GPH</option>
+                                    <option value="3">RUPS RAIWAQA</option>
+                                    <option value="4">COLOR MARKET</option>
+                                    <option value="5">SUPERFRESH</option>
+                                    <option value="6">DOLAI SUVA</option>
+                                    <option value="7">CWM</option>
+                                    <option value="8">FNU SAMABULA</option>
+                                    <option value="9">FNU VALELEVU</option>
+                                    <option value="10">COCA COLA FACTORY</option>
+                                </select>
+                            </div>
+                            <br />
+                            <button type="button" class="butt" data-dismiss="modal">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<br/>
+
+@*<div class="form-inline">
+        <form align="center">
+            @using (Html.BeginForm("PropIndex", "HHModel", FormMethod.Get))
+            {
+                <div style="color: white; background-color: darkblue;" align="center">
+                    <h2 style="font-family: 'Lato', sans-serif;" align="center">SEARCH FOR PROPERTY</h2>
+                    <input class="form-control" type="text" name="search" placeholder="eg. Suva or 800">
+                    <button class="butt" type="button"><span class="glyphicon glyphicon-search"></span>SEARCH</button><br />
+                    @Html.RadioButton("searchBy", "Location", true) <text style="font-family: 'Lato', sans-serif;">LOCATION</text>
+                    @Html.RadioButton("searchBy", "Price") <text style="font-family: 'Lato', sans-serif;">PRICE</text>
+                    @Html.RadioButton("searchBy", "Rooms") <text style="font-family: 'Lato', sans-serif;">BEDS</text>
+                    @Html.RadioButton("searchBy", "Baths") <text style="font-family: 'Lato', sans-serif;">BATH</text>
+                </div>
+            }
+        </form>
+    </div>*@
+
+<div>
+    <br/><br/>
+    <h2 align="center" style="font-family: 'Lato', sans-serif;">FEATURED PROPERTIES</h2>
+
+    <table class="table">
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td style="background-color: white;" align="center">
+                    <div class="imgcontainer" style="background-color: white;">
+                        @{
+                            var base64 = Convert.ToBase64String(item.Prop_Img);
+                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        @*<a href='@Url.Action("MyAction", "MyController")'>
+                            <img src='@Url.Content("~/Content/Images/MyLinkImage.png")' /></a>*@
+
+                        <a href='@Url.Action("PropertyCreate", "Properties")'><img src='@imgsrc' class="hoverimg"></a>
+                        <div class="overlay overlayfade">
+                            <div class="text">
+
+                                <br />
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Prop_Street), @Html.DisplayFor(modelItem => item.Prop_City)
+                                </p>
+                                <P>
+                                    @Html.DisplayFor(modelItem => item.Prop_NumOfBed) BEDS | @Html.DisplayFor(modelItem => item.Prop_NumOfBath) BATHS
+                                </P>
+
+                                <button style="text-transform: uppercase" class="butt" type="button">@Html.ActionLink("Interested", "PropertyDetails", new { id = item.Prop_Id })</button><br />
+
+                            </div>
+                        </div>
+                        <h3>
+                            $@Html.DisplayFor(modelItem => item.Prop_Price)
+
+                        </h3>
+                        <p>PER MONTH</p>
+                    </div><br />
+                </td>
+            }
+        </tr>
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("PropertyIndex", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+</div>
+
+
+@*p style="font-family: 'Lato', sans-serif;">
+        @Html.ActionLink("Create New", "PropertyCreate")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Street
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Number of Beds
+            </th>
+            <th>
+                Number of Bath
+            </th>
+            <th>
+                Condition
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Owner
+            </th>
+            <th>
+                Image Preview
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_NumOfBed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_NumOfBath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Condition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+                </td>
+                <td>
+
+                    @{
+                        var base64 = Convert.ToBase64String(item.Prop_Img);
+                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgsrc' style="max-width:2048px;max-height:2048px" />
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Prop_Id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Prop_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Prop_Id })
+                    </td>
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div id="imageCarousel" class="my-carousel carousel" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/slide.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 100%; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/image2.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/image4.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/slide4.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/slide5.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/slide6.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+            <div class="item" align="center" style="width: 100%">
+                <img id="fullsize" src="~/Content/Images/slide7.jpg" class="myslide w3-animate-fading img-responsive" style=" width: 3000px; height: 600px; top: auto; right: auto; bottom: -0.5px; left: 0px;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 9000);
+        }
+    </script>
+</body>
+</html>

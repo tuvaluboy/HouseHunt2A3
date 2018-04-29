@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+@*style="background-image:url('../../Content/Images/pagebg.jpg'); background-size:cover;"*@
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background: rgba(0, 0, 0, 0.8);">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <div>
+                            <a><img alt="logo" src="~/Content/Images/logo.png" height="50" width="180"></a>
+                        </div>
+                    </li>
+                    <li class="navbutton btn-lg">@Html.ActionLink("HOME", "PropertyIndex", "Properties")</li>
+
+                    <li class="navbutton btn-lg">@Html.ActionLink("AGENTS", "Agent", "Home")</li>
+
+                    <li class="navbutton btn-lg">@Html.ActionLink("SELL", "PropertyCreate", "Properties")</li>
+                    <li class="navbutton btn-lg">@Html.ActionLink("ABOUT US", "Contact", "Home")</li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <br />
+
+    </div>
+
+    <div>
+        <footer style="color: white; background-color: #211f20;">
+            <br>
+            <div class="container">
+                <div class="col-md-4 col-sm-4" style="width: 33.3%; float: left;">
+                    <p>SUPPORT : Support@fijihomes.com</p>
+                    <p>MANAGER : anuraghsharma@gmail.com</p>
+                    <p>PHONE : + (679) 999 9999</p>
+                </div>
+
+                <div align="center" class="col-md-12 col-sm-4" style="width: 33.3%; float: left;">
+                    <p style="font-family: 'Lato', sans-serif;" align="center"> Find Us On: </p>
+                    <a href="https://www.facebook.com/">
+                        <img src="~/Content/Images/facebook.png" alt="Facebook" style="width:42px;height:42px;border:0; align-content:center;">
+                    </a>
+                    <a href="https://twitter.com/">
+                        <img src="~/Content/Images/twitter.png" alt="Twitter" style="width:42px;height:42px;border:0;align-content:center;">
+                    </a>
+                </div>
+            </div>
+            <hr class="hrtag">
+            <p style="color: white" align="center">&copy  @DateTime.Now.Year - Fiji Homes</p><br />
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

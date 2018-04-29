@@ -1,0 +1,18 @@
+﻿<div>
+    <div class="form-inline">
+        <form align="center">
+            <div style="background-color: lightgray" align="center">
+                <h2 align="center">@ViewBag.Message</h2>
+                <input class="form-control" type="text" name="search" placeholder="eg. Suva or 800">
+                <button class="butt" type="button">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("List of Customers", "CustomerDetails", "HHModel")<br />
+    @Html.ActionLink("List of Agents", "AgentIndex", "HHModel")<br />
+    @Html.ActionLink("List of Owner", "OwnerIndex", "HHModel")<br />
+    @Html.ActionLink("List of Properties", "PropIndex", "HHModel")<br />
+</div>

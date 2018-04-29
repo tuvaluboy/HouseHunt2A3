@@ -1,0 +1,113 @@
+﻿@using Edi.Web.MVCExtensions.PagedList;
+@*@using PagedList.Mvc;*@
+@model  IPagedList<HouseHunt2.Models.Property>
+
+@*@{
+        ViewBag.Title = "PropIndex";
+    }*@
+
+<br />
+<div class="image">
+    <br />
+    <h2 align="center" class="shadow">Search for Property</h2>
+    @*<p>
+            @Html.ActionLink("Create New", "PropCreate")
+        </p>*@
+
+    <div class="form-inline">
+        <form align="center">
+            @using (Html.BeginForm("PropIndex", "HHModel", FormMethod.Get))
+            {
+
+
+                <div align="center">
+                    <input class="form-control" type="text" name="search" placeholder="eg. Suva or 800">
+                    <button class="butt" type="button"><span class="glyphicon glyphicon-search"></span>Search</button><br />
+                    @Html.RadioButton("searchBy", "Location", true) <text style="color:white">Location</text>
+                    @Html.RadioButton("searchBy", "Price") <text style="color:white">Price</text>
+                </div>
+
+
+            }
+        </form>
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.First().Prop_Street)*@
+            Street
+        </th>
+        <th>
+            City
+            @*@Html.DisplayNameFor(model => model.First().Prop_City)*@
+        </th>
+        <th>
+            Availability
+            @*@Html.DisplayNameFor(model => model.First().Prop_Avail)*@
+        </th>
+        <th>
+            Condition
+            @*@Html.DisplayNameFor(model => model.First().Prop_Condition)*@
+        </th>
+        <th>
+            Price
+            @*@Html.DisplayNameFor(model => model.First().Prop_Price)*@
+        </th>
+        <th>
+            Agent
+            @*@Html.DisplayNameFor(model => model.First().Agent.Ag_First)*@
+        </th>
+        <th>
+            Owner
+            @*@Html.DisplayNameFor(model => model.First().Owner.Own_First)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_NumOfBed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_NumOfBath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_Condition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prop_Price)
+        </td>
+        @*<td>
+            @Html.DisplayNameFor(model => model.Prop_Description)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Prop_Img)
+        </td>*@
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Prop_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Prop_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Prop_Id })
+        </td>*@
+        <td>
+            @Html.ActionLink("Interest", "")
+        </td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<HouseHunt2.Models.Property>
+
+@{
+    ViewBag.Title = "My Properties";
+}
+
+<br/><br/>
+<h2 align="center">My Properties</h2>
+<div style="font-family: 'Lato', sans-serif; color: black">
+    <br />
+
+    @*<p>
+            @Html.ActionLink("Create New", "PropCreate")
+        </p>*@
+
+    @*<div class="form-inline">
+        <form align="center">
+            @using (Html.BeginForm("PropIndex", "HHModel", FormMethod.Get))
+            {
+                <div style="background-color: lightgray;" align="center">
+                    <h2 style="font-family: 'Lato', sans-serif;" align="center">SEARCH FOR PROPERTY</h2>
+                    <input class="form-control" type="text" name="search" placeholder="eg. Suva or 800">
+                    <button class="butt" type="button"><span class="glyphicon glyphicon-search"></span>SEARCH</button><br />
+                    @Html.RadioButton("searchBy", "Location", true) <text style="font-family: 'Lato', sans-serif;">LOCATION</text>
+                    @Html.RadioButton("searchBy", "Price") <text style="font-family: 'Lato', sans-serif;">PRICE</text>
+                </div>
+            }
+        </form>
+        <br />
+        <br />
+        <br />
+    </div>*@
+</div>
+
+<hr />
+
+<h2 align="center" style="font-family: 'Lato', sans-serif;"></h2>
+
+@*<table class="table">
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td align="center">
+                <div class="imgcontainer">
+                    @{
+                        var base64 = Convert.ToBase64String(item.Prop_Img);
+                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgsrc' class="hoverimg">
+                    <div class="overlay overlayfade">
+                        <div class="text">
+                            <h3>
+                                $@Html.DisplayFor(modelItem => item.Prop_Price)
+
+                            </h3>
+                            <p>PER MONTH</p>
+                            <br />
+                            <p>
+                                @Html.DisplayFor(modelItem => item.Prop_Street), @Html.DisplayFor(modelItem => item.Prop_City)
+                            </p>
+                            <P>
+                                @Html.DisplayFor(modelItem => item.Prop_NumOfBed) BEDS | @Html.DisplayFor(modelItem => item.Prop_NumOfBath) BATHS
+                            </P>
+                        </div>
+                    </div>
+                </div>
+            </td>
+                        }
+    </tr>
+</table>*@
+
+<p style="font-family: 'Lato', sans-serif;">
+    @Html.ActionLink("Create New", "PropertyCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+        
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @{
+                    var base64 = Convert.ToBase64String(item.Prop_Img);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src='@imgsrc' style="max-width:2048px;max-height:2048px" />
+            </td>
+            <td>
+               <p>
+               @Html.DisplayFor(modelItem => item.Prop_Street)
+                   <br/>
+            @Html.DisplayFor(modelItem => item.Prop_City)
+                   <br />
+            @Html.DisplayFor(modelItem => item.Prop_NumOfBed)
+                   <br />
+            @Html.DisplayFor(modelItem => item.Prop_NumOfBath)
+                   <br />
+            @Html.DisplayFor(modelItem => item.Prop_Condition)
+                   <br />
+            @Html.DisplayFor(modelItem => item.Prop_Price)
+                   <br />
+
+
+                   
+              <p style="font-size:large; color:red"> @Html.DisplayFor(modelItem => item.Prop_Approved)</p>
+           </td>
+       
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Prop_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Prop_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Prop_Id })
+                </td>*@
+        </tr>
+
+                    }
+</table>

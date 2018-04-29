@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HouseHunt2.Models.Agent>
+
+@{
+    ViewBag.Title = "AgentIndex";
+}
+
+<h2>AgentIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_First)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_Last)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ag_Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_First)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_Last)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ag_Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Ag_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Ag_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Ag_Id })
+        </td>
+    </tr>
+}
+
+</table>

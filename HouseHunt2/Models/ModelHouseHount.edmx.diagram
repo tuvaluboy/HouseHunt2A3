@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e5ef86dea160430fab6c61be3691572e" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="HouseHountModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseHountModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseHountModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseHountModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseHountModel.AspNetUser" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseHountModel.Property" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_AspNetUsers_dbo_AspNetUsers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="HouseHountModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="HouseHountModel.AgentProperty" />
+        <EntityTypeShape EntityType="HouseHountModel.PropertyAgent" Width="1.5" PointX="7.5" PointY="6.75" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_AspNetPropAgent_dbo_AspNetUsers_UserIds" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_AspNetPropAgent_dbo_Property_Ids" />
+        <EntityTypeShape EntityType="HouseHountModel.Reservation" Width="1.5" PointX="9.75" PointY="6.375" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_Resevation_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="HouseHountModel.FK_dbo_PropertyAgent_dbo_PA_Ids" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

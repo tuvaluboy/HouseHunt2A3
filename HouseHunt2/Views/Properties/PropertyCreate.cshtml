@@ -1,0 +1,102 @@
+﻿@model HouseHunt2.Models.Property
+
+<div>
+    <br/><br/>
+    <h2 align="center">ADD LISTING</h2>
+
+    <div class="box">
+        <h3 align="center">PROPERTY DETAILS</h3>
+        @using (Html.BeginForm("PropertyCreate", "Properties", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+        {
+            @Html.AntiForgeryToken()
+    
+        <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_Street, new { htmlAttributes = new { @class = "form-control", @placeholder="Street Name" } })
+                    @Html.ValidationMessageFor(model => model.Prop_Street, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_City, new { htmlAttributes = new { @class = "form-control", @placeholder = "City Name" } })
+                    @Html.ValidationMessageFor(model => model.Prop_City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_NumOfBed, new { htmlAttributes = new { @class = "form-control", @placeholder = "Number of Beds" } })
+                    @Html.ValidationMessageFor(model => model.Prop_NumOfBed, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_NumOfBath, new { htmlAttributes = new { @class = "form-control", @placeholder = "Number of Bathrooms" } })
+                    @Html.ValidationMessageFor(model => model.Prop_NumOfBath, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @*@Html.ValidationMessageFor(model => model.Prop_Condition, "", new { @class = "text-danger" })
+                        @Html.DropDownList("Prop_Condition", (IEnumerable<SelectListItem>)ViewBag.Condition, null, new { @class = "form-control" })*@
+                    @Html.EditorFor(model => model.Prop_Condition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Property Condition" } })
+                    @Html.ValidationMessageFor(model => model.Prop_Condition, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_Price, new { htmlAttributes = new { @class = "form-control", @placeholder = "Rent per Month"} })
+                    @Html.ValidationMessageFor(model => model.Prop_Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center">
+                    @Html.EditorFor(model => model.Prop_Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Property Description" } })
+                    @Html.ValidationMessageFor(model => model.Prop_Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.Prop_Approved, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prop_Approved, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prop_Approved, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Id, "Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+            
+                <div align="center">
+                    <p align="center">PROPERTY IMAGE</p>
+                    @*@Html.EditorFor(model => model.Prop_Img, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Prop_Img, "", new { @class = "text-danger" })*@
+                    <input type="file" id="image1" name="image1" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div align="center" class="col-md-offset-2 col-md-10">
+                    <input  type="submit" value="ADD" class="butt" />
+                </div>
+            </div>
+    
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

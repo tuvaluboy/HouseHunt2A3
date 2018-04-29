@@ -1,0 +1,23 @@
+﻿@model HouseHunt2.Models.ApplicationUser
+@{
+    ViewBag.Title = "UserRoleIndex";
+}
+
+<h2>Agent Selecting</h2>
+@using (Html.BeginForm()) { 
+    @Html.AntiForgeryToken()
+<div class="form-group">
+    @Html.LabelFor(model => model.Id, "User Account", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @*@Html.DropDownList("Owner_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Owner_Id, "", new { @class = "text-danger" })*@
+        @*@Html.DropDownListFor(x => x., new SelectList(ViewBag.OwnerList, "Owner_Id"))*@
+        @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.userList, null, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+</div>
+}

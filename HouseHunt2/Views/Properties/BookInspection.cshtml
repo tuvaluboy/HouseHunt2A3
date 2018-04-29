@@ -1,0 +1,36 @@
+﻿@model HouseHunt2.Models.PropertyAgent
+
+@{
+    ViewBag.Title = "BookInspection";
+}
+
+<h2>BookInspection</h2>
+
+@using (Html.BeginForm()) {    
+   <div class="form-horizontal">
+            <h4>PropertyAgent</h4>
+            <hr />
+       <p>Still needs the Agent to update available dates for inspection!!!!!</p>
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DropDownList("Prod_Id", (IEnumerable<SelectListItem>)ViewBag.Agents, null, new { @class = "form-control" })
+
+        </div>*@
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>*@
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "PropertyIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
