@@ -17,8 +17,8 @@ namespace HouseHunt2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Property()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
             this.PropertyAgents = new HashSet<PropertyAgent>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public int Prop_Id { get; set; }
@@ -37,8 +37,8 @@ namespace HouseHunt2.Models
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyAgent> PropertyAgents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

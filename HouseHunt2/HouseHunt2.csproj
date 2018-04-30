@@ -59,6 +59,9 @@
     <Reference Include="Edi.Web.MvcExtensions, Version=5.2.3.1, Culture=neutral, PublicKeyToken=8a476f025a04049b, processorArchitecture=MSIL">
       <HintPath>..\packages\Edi.Web.MvcExtensions.5.2.3.1\lib\net45\Edi.Web.MvcExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.4.4\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -213,6 +216,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobScheduler.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PreferenceController.cs" />
     <Compile Include="Controllers\PropertiesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
@@ -237,22 +241,22 @@
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HHModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -268,6 +272,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HouseHuntModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HouseHuntModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HouseHuntModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HouseHuntModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HouseHuntModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -289,14 +308,17 @@
     <Compile Include="Models\Owner.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Preference.cs">
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Property.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PropertyAgent.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reservation.cs">
-      <DependentUpon>ModelHouseHount.tt</DependentUpon>
+      <DependentUpon>HouseHuntModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -322,6 +344,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HouseHuntModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HouseHuntModel.edmx</DependentUpon>
+      <LastGenOutput>HouseHuntModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HouseHuntModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HouseHuntModel.edmx</DependentUpon>
+      <LastGenOutput>HouseHuntModel.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModelHouseHount.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -356,6 +388,13 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="Models\HouseHuntModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HouseHuntModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HouseHuntModel.edmx.diagram">
+      <DependentUpon>HouseHuntModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -430,9 +469,10 @@
     <Content Include="Views\Properties\PropertyDetails.cshtml" />
     <Content Include="Views\Properties\BookInspection.cshtml" />
     <Content Include="Views\Properties\Edit.cshtml" />
-    <Content Include="Views\Properties\UserPref.cshtml" />
     <Content Include="Views\UserPreference.cshtml" />
-    <Content Include="Views\Properties\Preferences.cshtml" />
+    <Content Include="Views\Properties\PreferenceIndex.cshtml" />
+    <Content Include="Views\Preference\Index.cshtml" />
+    <Content Include="Views\Preference\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

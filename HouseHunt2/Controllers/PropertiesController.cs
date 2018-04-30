@@ -11,12 +11,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Edi.Web.MVCExtensions.PagedList;
 using System.Data.Entity.Infrastructure;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace HouseHunt2.Controllers
 {
     public class PropertiesController : Controller
     {
-        private HouseHountEntities db = new HouseHountEntities();
+        private HouseHuntEntitiesII db = new HouseHuntEntitiesII();
         private ApplicationDbContext context = new ApplicationDbContext();
 
         #region Admin and Agent
@@ -61,6 +64,37 @@ namespace HouseHunt2.Controllers
 
 
         #endregion
+
+
+        //Get: Preference
+        public ActionResult PreferenceIndex()
+        {
+            string _filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            _filePath += "\\prescription.pdf";
+            Document doc = new Document(iTextSharp.text.PageSize.A4);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(_filePath, FileMode.Create));
+            doc.Open();
+            String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string f = "Date: ";
+            Paragraph dateParagraph = new Paragraph(f);
+
+            Paragraph vitalsParagraph = new Paragraph("\nTemperature: ");
+            Paragraph doct = new Paragraph("\nDoctorID: ");
+            Paragraph prescriptionParagraph = new Paragraph("\nPrescription: ");
+
+
+
+            doc.Add(dateParagraph);
+            doc.Add(vitalsParagraph);
+            doc.Add(doct);
+            doc.Add(prescriptionParagraph);
+            doc.Close();
+            return View(db.Preferences.ToList());
+        }
+
+
+
 
         // GET: Properties
         public ActionResult PropertyIndex(string search, string searchBy, int? page)
@@ -259,10 +293,54 @@ namespace HouseHunt2.Controllers
             return View();
         }
 
+        public void CreatePdf()
+        {
+            try
+            {
+                string _filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+                _filePath += "\\prescription.pdf";
+                Document doc = new Document(iTextSharp.text.PageSize.A4);
+                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(_filePath, FileMode.Create));
+                doc.Open();
+                String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+                string f = "Date: ";
+                Paragraph dateParagraph = new Paragraph(f);
+
+                Paragraph vitalsParagraph = new Paragraph("\nTemperature: ");
+                Paragraph doct = new Paragraph("\nDoctorID: ");
+                Paragraph prescriptionParagraph = new Paragraph("\nPrescription: ");
+
+
+
+                doc.Add(dateParagraph);
+                doc.Add(vitalsParagraph);
+                doc.Add(doct);
+                doc.Add(prescriptionParagraph);
+                doc.Close();
+            }
+            catch
+            {
+                ExceptionContext e;
+            }
+           
+
+        }
+
+        public void MatchPreference(string street, int price)
+        {
+            var result = from d in db.Preferences
+                         where d.Location == street
+                         where d.Price == price
+                         select d;
+           
+                
+                }
+
         // POST: Properties/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PropertyCreate(HttpPostedFileBase image1, [Bind(Include = "Prop_Id,Prop_Street,Prop_City,Prop_NumOfBed,Prop_NumOfBath,Prop_Condition,Prop_Price,Prop_Description,Prop_Approved,Id,Prop_Img")] Property property)
+        public ActionResult PropertyCreate(HttpPostedFileBase image1, [Bind(Include = "Prop_Street,Prop_City,Prop_NumOfBed,Prop_NumOfBath,Prop_Condition,Prop_Price,Prop_Description,Prop_Approved,Id,Prop_Img")] Property property)
         {
             if (ModelState.IsValid)
             {
