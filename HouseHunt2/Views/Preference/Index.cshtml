@@ -3,67 +3,67 @@
 @{
     ViewBag.Title = "Index";
 }
+<br>
+<h2 align="center">My Preferences</h2>
 
-<h2>Index</h2>
+<br />
+<div class="box" align="center">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bedroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baths)
+            </th>
+            <th>
+                Nearby Location
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Bedroom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Area)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Baths)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NearbyLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bedroom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baths)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NearbyLocation)
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bedroom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Area)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Baths)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NearbyLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PreId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PreId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PreId })
-        </td>
-    </tr>
-}
+    </table>
 
-</table>
+    <div>
+        <button class="butt" type="button">@Html.ActionLink("CREATE NEW", "Create")</button>
+        <button class="butt" type="button">@Html.ActionLink("UPDATE", "Edit")</button>
+        <button class="butt" type="button">@Html.ActionLink("DELETE", "Delete")</button>
+        <br />
+    </div>
+
+</div>
+
+<br>

@@ -34,5 +34,6 @@ namespace HouseHunt2.Models
         public virtual DbSet<Property> Properties { get; set; }
         public virtual DbSet<PropertyAgent> PropertyAgents { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
     }
 }

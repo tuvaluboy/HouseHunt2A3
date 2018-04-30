@@ -82,13 +82,13 @@ namespace HouseHunt2.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
+            // This doesn't count login failures towards account lockout 
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("PropertyIndex", "Properties");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -431,7 +431,7 @@ namespace HouseHunt2.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("PropertyManager", "Properties");
         }
 
         //

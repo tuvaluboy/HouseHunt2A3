@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\finii\Desktop\HouseHunt2\HouseHunt2\Models\HouseHuntModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Kaushal\Desktop\CS415_A3\MondayVersion\HouseHunt2\HouseHunt2\Models\HouseHuntModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

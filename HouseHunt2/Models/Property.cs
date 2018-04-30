@@ -19,6 +19,7 @@ namespace HouseHunt2.Models
         {
             this.PropertyAgents = new HashSet<PropertyAgent>();
             this.AspNetUsers = new HashSet<AspNetUser>();
+            this.Reports = new HashSet<Report>();
         }
     
         public int Prop_Id { get; set; }
@@ -40,5 +41,7 @@ namespace HouseHunt2.Models
         public virtual ICollection<PropertyAgent> PropertyAgents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

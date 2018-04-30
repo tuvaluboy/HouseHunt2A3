@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -40,60 +42,83 @@ namespace HouseHunt2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PreId,Bedroom,Location,Area,Price,Baths,NearbyLocation")] Preference preference)
         {
-            
-                    preference.Id = User.Identity.GetUserId();
-                    //  preference.Prop_Approved = "AWAITING APPROVAL";
-                    db.Preferences.Add(preference);
-                    db.SaveChanges();
+            int value = 1;
 
-                    return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                preference.Id = User.Identity.GetUserId();
+                //  preference.Prop_Approved = "AWAITING APPROVAL";
+                db.Preferences.Add(preference);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                return RedirectToAction("Create");
                 
                // return RedirectToAction("Create");
          
         }
 
         // GET: Preference/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Preference preference = db.Preferences.Find(id);
+            if (preference == null)
+            {
+                return HttpNotFound();
+            }
+            return View(preference);
         }
 
         // POST: Preference/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpPost, ActionName("Edit")]
+        public ActionResult Edit([Bind(Include = "PreId,Bedroom,Location,Area,Price,Baths,NearbyLocation")] Preference preference)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(preference).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(preference);
         }
 
         // GET: Preference/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Preference preference = db.Preferences.Find(id);
+            if ( preference == null)
+            {
+                return HttpNotFound();
+            }
+            return View(preference);
         }
 
         // POST: Preference/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Preference preference = db.Preferences.Find(id);
+            db.Preferences.Remove(preference);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

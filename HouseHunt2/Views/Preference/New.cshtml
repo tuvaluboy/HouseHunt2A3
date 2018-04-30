@@ -1,0 +1,68 @@
+﻿@model HouseHunt2.Models.Preference
+
+<div>
+    <h4>Preference</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bedroom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bedroom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NearbyLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NearbyLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PreId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -26,12 +26,12 @@ namespace HouseHunt2.Controllers
 
                 if (!isAdminUser())
                 {
-                    return RedirectToAction("Index", "HHModel");
+                    return RedirectToAction("PropertyIndex", "Properties");
                 }
             }
             else
             {
-                return RedirectToAction("Index", "HHModel");
+                return RedirectToAction("PropertyManager", "Properties");
             }
             ViewBag.userList = new SelectList(context.Users, "Id", "Email"); ;
             //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));

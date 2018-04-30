@@ -24,6 +24,9 @@
         <AssociationConnector Association="Model.FK_dbo_PropertyAgent_dbo_PA_Ids" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AgentProperty" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Report" Width="1.5" PointX="10.5" PointY="12.25" />
+        <AssociationConnector Association="Model.FK_UserIds" />
+        <AssociationConnector Association="Model.FK_Property_Ids" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
