@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<HouseHunt2.Models.Property>
-
-<br>
-<h2 align="center">Managing Properties</h2>
+<br><br>
+<div align="center">
+    <button class="butt btn-lg" type="button">MANAGE PROPERTIES</button>
+    <button class="butt btn-lg" type="button">AGENTS</button>
+    <button class="butt btn-lg" type="button">REPORTS</button>
+</div>
 <div style="font-family: 'Lato', sans-serif; color: black">
     <br />
 
@@ -111,11 +114,11 @@
 
 
                     @*<p style="font-size:large; color:red"> @Html.DisplayFor(modelItem => item.Prop_Approved)</p>*@
-</td>
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)   @Html.DisplayFor(modelItem => item.AspNetUser.LastName) <br/>
-                @Html.DisplayFor(modelItem => item.AspNetUser.Street) , @Html.DisplayFor(modelItem => item.AspNetUser.Çity) <br/>
-                @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNum) <br/>
+                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)   @Html.DisplayFor(modelItem => item.AspNetUser.LastName) <br />
+                @Html.DisplayFor(modelItem => item.AspNetUser.Street) , @Html.DisplayFor(modelItem => item.AspNetUser.Çity) <br />
+                @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNum) <br />
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
             </td>
 
@@ -132,5 +135,5 @@
                 </td>*@
         </tr>
 
-                    }
+    }
 </table>

@@ -25,6 +25,7 @@ namespace HouseHunt2.Models
             this.Reservations = new HashSet<Reservation>();
             this.Properties1 = new HashSet<Property>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.Reports = new HashSet<Report>();
         }
     
         public string Id { get; set; }
@@ -63,5 +64,7 @@ namespace HouseHunt2.Models
         public virtual ICollection<Property> Properties1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

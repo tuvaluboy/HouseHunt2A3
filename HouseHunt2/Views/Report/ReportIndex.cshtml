@@ -1,0 +1,86 @@
+﻿@model IEnumerable<HouseHunt2.Models.Report>
+
+@{
+    ViewBag.Title = "ReportIndex";
+}
+<br>
+<h2 align="center">Income Report</h2>
+
+<div align="center">
+    <form action="/action_page.php">
+        Start Date:
+        <input type="date" name="sdate">
+        End Date:
+        <input type="date" name="edate">
+        <button class="butt">GENERATE REPORT</button><br>
+    </form>
+</div>
+<br>
+<div align="center">
+    <table class="table" align="center">
+        <tr align="center">
+            <th align="center">
+                Property Id
+            </th>
+            <th align="center">
+                Date Paid
+            </th>
+            <th align="center">
+                Address
+            </th>
+            <th align="center">
+                Price
+            </th>
+            <th align="center">
+                Bond
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Street), @Html.DisplayFor(modelItem => item.Prop_City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prop_Bond)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div align="left">
+    <table>
+        <tr>
+            <td style="font-weight:bold">TOTAL HOUSES BOUGHT :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold">TOTAL INCOME :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold">TOTAL AGENT COMMISION :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold">TOTAL BUSINESS INCOME :</td>
+            <td></td>
+        </tr>
+    </table>
+    
+</div>
+
+<div align="center"><button class="butt">DOWNLOAD</button></div>

@@ -69,7 +69,6 @@
                     <option value="9">>9</option>
                 </select>
                 <button class="butt" type="button"><span class="glyphicon glyphicon-search"></span>SEARCH</button>
-                <button class="butt" type="button" data-toggle="modal" data-target="#preferences">CREATE PREFERENCE</button>
             </div>
             <br />
         </div>
@@ -233,8 +232,9 @@
         </tr>
     </table>
 
-    @Html.PagedListPager(Model, page => Url.Action("PropertyIndex", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
-</div>
+    <div align="center">
+        @Html.PagedListPager(Model, page => Url.Action("PropertyIndex", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+    </div></div>
 
 
 @*p style="font-family: 'Lato', sans-serif;">
