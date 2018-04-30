@@ -21,7 +21,7 @@ namespace HouseHunt2.Controllers
         }
 
         // GET: Report/Details/5
-        public ActionResult ReportDetails([Bind(Include = "Prop_Id,Prop_Date,Prop_Street,Prop_City,Id,Prop_Price,Prop_Bond")] Report report)
+        public ActionResult ReportDetails([Bind(Include = "Report_Id,Prop_Id,Prop_Date,Prop_Street,Prop_City,Id,Prop_Price,Prop_Bond")] Report report)
         {
             db.Reports.Add(report);
             db.SaveChanges();
