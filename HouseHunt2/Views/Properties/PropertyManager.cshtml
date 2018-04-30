@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<HouseHunt2.Models.Property>
 
 <br>
-<h2 align="center">Managing Properties</h2>
+<br><br>
+<div align="center">
+    <button class="butt btn-lg" type="button">MANAGE PROPERTIES</button>
+    <button class="butt btn-lg" type="button">AGENTS</button>
+    <button class="butt btn-lg" type="button">REPORTS</button>
+</div>
 <div style="font-family: 'Lato', sans-serif; color: black">
     <br />
 
@@ -84,53 +89,53 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
+    <tr>
+        <td>
 
-                @{
+            @{
                     var base64 = Convert.ToBase64String(item.Prop_Img);
                     var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                }
-                <img src='@imgsrc' style="max-width:2048px;max-height:2048px" />
-            </td>
-            <td>
-                <p>
-                    @Html.DisplayFor(modelItem => item.Prop_Street)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_City)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_NumOfBed)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_NumOfBath)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_Condition)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_Price)
-                    <br />
-                    @Html.DisplayFor(modelItem => item.Prop_Approved)
+            }
+            <img src='@imgsrc' style="max-width:2048px;max-height:2048px" />
+        </td>
+        <td>
+            <p>
+                @Html.DisplayFor(modelItem => item.Prop_Street)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_City)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_NumOfBed)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_NumOfBath)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_Condition)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_Price)
+                <br />
+                @Html.DisplayFor(modelItem => item.Prop_Approved)
 
 
-                    @*<p style="font-size:large; color:red"> @Html.DisplayFor(modelItem => item.Prop_Approved)</p>*@
-</td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)   @Html.DisplayFor(modelItem => item.AspNetUser.LastName) <br/>
-                @Html.DisplayFor(modelItem => item.AspNetUser.Street) , @Html.DisplayFor(modelItem => item.AspNetUser.Çity) <br/>
-                @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNum) <br/>
+                @*<p style="font-size:large; color:red"> @Html.DisplayFor(modelItem => item.Prop_Approved)</p>*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)   @Html.DisplayFor(modelItem => item.AspNetUser.LastName) <br />
+            @Html.DisplayFor(modelItem => item.AspNetUser.Street) , @Html.DisplayFor(modelItem => item.AspNetUser.Çity) <br />
+            @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNum) <br />
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+
+        <td>
+            @Html.ActionLink("Approve", "PropertyApprove", new { id = item.Prop_Id })
+        </td>
+        @*<td>
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
             </td>
-
             <td>
-                @Html.ActionLink("Approve", "PropertyApprove", new { id = item.Prop_Id })
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Prop_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Prop_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Prop_Id })
-                </td>*@
-        </tr>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Prop_Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Prop_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Prop_Id })
+            </td>*@
+    </tr>
 
                     }
 </table>
